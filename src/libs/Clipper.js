@@ -3,6 +3,7 @@ import { CLIPPER_DEFAULT_OPTIONS, CLIP_RECT_DEFAULT, IMG_STATUS_IDLE, IMG_STATUS
 
 import { mousedownHandler, mousemoveHandler, mouseupHandler, wheelHandler, keydownHandler, touchstartHandler, touchmoveHandler, touchendHandler } from './event-helper.js'
 import styleStr from '../assets/styles/index.js'
+import bgImg from '../assets/images/bg.png'
 class Clipper {
 	constructor (options = {}) {
 		this.status = CLIPPER_STATUS_IDLE // 默认空闲状态
@@ -162,7 +163,7 @@ class Clipper {
 		// const clipRectVisible = this.options.clipRect.visible
 		// const visibleStyle = clipRectVisible ? 'display: block' : 'display: none'
 		// 创建背景图像
-		const clipperBgCvs = createElement('div', { class: 'clipper-bg-cvs' })
+		const clipperBgCvs = createElement('div', { class: 'clipper-bg-cvs', style: `background-image: url(${bgImg})`})
 		// 创建核心画布
 		const clipperCvs = createElement('canvas', { class: 'clipper-cvs' })
 		// 创建遮罩层

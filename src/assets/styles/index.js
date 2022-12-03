@@ -9,7 +9,7 @@ export default `
 	height: 100%;
 }
 .clipper-bg-cvs {
-	background: url('./src/assets/images/bg.png');
+	/*background: url('./src/assets/images/bg.png');*/
 	position: absolute;
 	left: 0;
 	top:  0; 

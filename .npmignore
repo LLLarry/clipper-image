@@ -1,0 +1,6 @@
+src/
+src/assets/images/*.gif
+index.html
+rollup.config.js
+*.log
+*.lock

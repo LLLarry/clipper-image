@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+	<title>clipper</title>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		#app{
+			width: 100vw;
+			height: 100vh;
+			background: #000033;
+			position: relative;
+			float: left
+		}
+		input[type="file"] {
+			color: #fff;
+		}
+		.clipper {
+			width: 500px;
+			height: 300px;
+			margin:  50px 0 50px calc(25vw - 250px);
+		}
+		
+		.contraller {
+			display: flex;
+			justify-content: flex-end;
+			margin: -8px 0 7px 0;
+		}
+		.contraller .icon-guanbicuowu {
+			font-size: 18px;
+			cursor: pointer;
+			padding: 8px;
+			transition: background .3s ease;
+		}
+		.contraller .icon-guanbicuowu:hover {
+			background: #eee;
+		}
+		#container {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 50vw;
+			height: 100vh;
+		}
+		.bottom-contral {
+			padding: 20px 60px;
+		}
+		.bottom-contral button {
+			padding: 6px 12px;
+		}
+		@media screen and (max-width: 560px) {
+			.clipper {
+				width: 80vw;
+				height: 80vw;
+				margin:  20px auto;
+			}
+			#container {
+				position: static !important;
+				width: 100vw !important;
+				height: 100vh !important;
+			}
+			.preview, .clip-imgs {
+				max-width: 90vw !important;
+				
+			}
+		}
+	</style>
+	<script src="https://cdn.bootcdn.net/ajax/libs/monaco-editor/0.34.1/min/vs/loader.min.js"></script>
+	<script src="./dist/Clipper.iife.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div class="clipper"></div>
+		<!-- 底部控制按钮 -->
+		<div class="bottom-contral">
+			<input type="file" accept="image/png, image/jpg, image/gif, image/jpeg" id="file">
+			<button class="btn" id="getClipImage">获取裁剪图片对象</button>
+			<button id="destory">销毁destory</button>
+			<button id="init">初始化init</button>
+		</div>
+		<div class="preview" style="color: #fff; padding: 20px; margin: 20px; border: 1px solid #333; max-width: 45vw;">
+			<h5>预览窗口</h5>
+			<img src="" alt="">
+		</div>
+		<div class="clip-imgs" style="color: #fff; padding: 20px; margin: 20px; border: 1px solid #333; max-width: 45vw;">
+			<h5>获取裁剪图片窗口</h5>
+		</div>
+
+		<!-- 代码容器 -->
+		<div id="container"></div>
+	</div>
+
+<!-- 	<script type="module">
+		var clipper = new Clipper({
+			el: '.clipper',
+			clipRect: {
+				size: [0.5, 0.5],
+				position: 'center',
+				visible: true,
+				isCanHidden: true, // 是否支持隐藏
+				isCanResize: true, // 是否可以更改尺寸大小
+				isCanPosition: true // 是否可以改变位置
+			},
+			onChange (res) {
+				console.log('res', res)
+				const prevImg = document.querySelector('.preview img')
+				prevImg.src = URL.createObjectURL(res)
+			}
+		})
+
+		document.querySelector('#getClipImage').onclick =  function () {
+			clipper.getClipImage().then(res => {
+				const img = new Image()
+				img.src = URL.createObjectURL(res)
+				document.querySelector('.clip-imgs').appendChild(img)
+			})
+		}
+
+		document.querySelector('#file').oninput =  function (event) {
+			console.log(event.target.files[0])
+
+			clipper.setImgFile(event.target.files[0])
+			event.target.value = null
+		}
+		
+		document.querySelector('#destory').onclick =  function (event) {
+			clipper.destory()
+		}
+		document.querySelector('#init').onclick =  function (event) {
+			clipper.init()
+		}
+	</script> -->
+	<script type="text/javascript">
+		var initValuePc = `
+var clipper = new Clipper({
+			el: '.clipper',
+			clipRect: {
+				size: [0.5, 0.5],
+				position: 'center',
+				visible: true,
+				isCanHidden: true, // 是否支持隐藏
+				isCanResize: true, // 是否可以更改尺寸大小
+				isCanPosition: true // 是否可以改变位置
+			},
+			onChange (res) {
+				const prevImg = document.querySelector('.preview img')
+				prevImg.src = URL.createObjectURL(res)
+			}
+		})
+
+		document.querySelector('#getClipImage').onclick =  function () {
+			clipper.getClipImage().then(res => {
+				const img = new Image()
+				img.src = URL.createObjectURL(res)
+				document.querySelector('.clip-imgs').appendChild(img)
+			})
+		}
+
+		document.querySelector('#file').oninput =  function (event) {
+			console.log(event.target.files[0])
+
+			clipper.setImgFile(event.target.files[0])
+			event.target.value = null
+		}
+		
+		document.querySelector('#destory').onclick =  function (event) {
+			clipper.destory()
+		}
+		document.querySelector('#init').onclick =  function (event) {
+			clipper.init()
+		}
+		`
+
+
+		var initValueMobile = `
+var clipper = new Clipper({
+			el: '.clipper',
+			clipRect: {
+				size: [0.8, 0.8],
+				position: 'center',
+				visible: true,
+				isCanHidden: false, // 是否支持隐藏
+				isCanResize: false, // 是否可以更改尺寸大小
+				isCanPosition: false // 是否可以改变位置
+			},
+			onChange (res) {
+				const prevImg = document.querySelector('.preview img')
+				prevImg.src = URL.createObjectURL(res)
+			}
+		})
+
+		document.querySelector('#getClipImage').onclick =  function () {
+			clipper.getClipImage().then(res => {
+				const img = new Image()
+				img.src = URL.createObjectURL(res)
+				document.querySelector('.clip-imgs').appendChild(img)
+			})
+		}
+
+		document.querySelector('#file').oninput =  function (event) {
+			console.log(event.target.files[0])
+
+			clipper.setImgFile(event.target.files[0])
+			event.target.value = null
+		}
+		
+		document.querySelector('#destory').onclick =  function (event) {
+			clipper.destory()
+		}
+		document.querySelector('#init').onclick =  function (event) {
+			clipper.init()
+		}
+		`
+	</script>
+	<script>
+		const initValue = window.innerWidth < 560 ? initValueMobile : initValuePc
+		require.config({ paths: { vs: 'https://cdn.bootcdn.net/ajax/libs/monaco-editor/0.34.1/min/vs' } });
+			require(['vs/editor/editor.main'], function () {
+				var editor = monaco.editor.create(document.getElementById('container'), {
+					value: initValue,
+					language: 'javascript',
+					lineNumbers: 'off',
+					roundedSelection: false,
+					scrollBeyondLastLine: false,
+					readOnly: false,
+					theme: 'vs-dark'
+				});
+
+				// editor.onDidChangeModelContent((e) => {
+				// 	createScript(editor.getValue())
+				// })
+
+			});
+		
+			createScript(initValue)
+			
+			function createScript (v) {
+				// 移除script
+				const scripts = document.querySelectorAll('script.runtime')
+				Array.from(scripts).forEach(el => {
+					el.parentNode.removeChild(el)
+				})
+				
+
+				// 移除slider-captcha 内容
+				Array.from(document.querySelectorAll('.slider-captcha')).forEach(el => {
+					el.innerHTML = ''
+				})
+
+				var script = document.createElement('script')
+				script.setAttribute('class', 'runtime')
+				script.innerHTML = v
+				document.body.appendChild(script)
+			}
+	</script>
+</body>
+</html>

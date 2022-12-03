@@ -2,14 +2,14 @@
 `clipperjs`是一款非常强大却又简单的图片裁剪工具，它可以进行非常灵活的配置，支持手机端使用（关键是使用方法简单，几行代码就可以搞定）
 
 ## 演示示例
-[演示地址](http://127.0.0.1:9005/)
+[演示地址](http://121.5.230.70:8080/clipper-image/)
 
 ### PC端演示
 
-![](./src/assets/images/pc_preview.gif)
+![](http://121.5.230.70:8080/clipper-image/pc_preview.gif)
 
 ### 手机端演示
-![](./src/assets/images/mobile_preview.gif)
+![](http://121.5.230.70:8080/clipper-image/mobile_preview.gif)
 
 ## 特色功能
 
@@ -20,15 +20,15 @@
 ## 快速开始
 ### 安装
 ```powershell
-npm install clipperjs --save
+npm install clipper-image --save
 ```
 
 ### 引入
 ```js
- import Clipper from 'clipperjs'
+ import Clipper from 'clipper-image'
 ```
 
-> 提示：也支持`<script src="clipperjs.iife.js"></script>`的方式引入
+> 提示：也支持`<script src="clipper-image.iife.js"></script>`的方式引入
 
 ### 用法
 添加1`html`容器

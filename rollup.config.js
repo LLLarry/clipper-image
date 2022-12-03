@@ -10,17 +10,17 @@ export default {
   input: 'src/index.js',
   output: [
     {
-      file: 'dist/Clipper.cjs.js',
+      file: 'dist/clipper-image.cjs.js',
       format: 'cjs',
       // compact: true
     },
     {
-      file: 'dist/Clipper.es.js',
+      file: 'dist/clipper-image.es.js',
       format: 'es',
        // compact: true
     },
     {
-      file: 'dist/Clipper.iife.js',
+      file: 'dist/clipper-image.iife.js',
       format: 'iife',
       name: 'Clipper',
       // compact: true

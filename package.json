@@ -1,14 +1,26 @@
 {
-  "name": "clipper",
-  "version": "1.0.0",
+  "name": "clipper-image",
+  "version": "1.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "dist/Clipper.cjs.js",
+  "module": "dist/Clipper.es.js",
   "scripts": {
     "build": " rollup -c",
     "dev": "rollup -c -w"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "clipper-image",
+    "裁剪图片",
+    "图片裁剪",
+    "头像截取",
+    "clipper"
+  ],
+  "homepage": "http://121.5.230.70:8080/clipper-image/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LLLarry/clipper-image"
+  },
+  "author": "LLLarry",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.20.5",
